@@ -2,7 +2,7 @@ name: Build and run script
 on: push
 jobs:
   build:
-    environment: ${{ github.base_ref }}
+    environment: ${{ github.ref_name }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -21,6 +21,7 @@ jobs:
 
       - name: Test
         run: |
+          echo ${{ vars.TEST }}
           echo ${{ github.base_ref }}
           echo ${{ github.ref }}
           echo ${{ github.ref_name }}
