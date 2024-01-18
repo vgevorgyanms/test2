@@ -1,4 +1,5 @@
 name: Build
+description: Build and run script
 on: push
 jobs:
   build:
