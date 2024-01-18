@@ -1,0 +1,26 @@
+name: Building 
+description: Building
+inputs:
+  working-directory:
+    required: true
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ${{ inputs.working-directory }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Downloading dependencies
+      run: |
+        npm i
+
+    - name: Building
+      run: |
+        npm run compile
