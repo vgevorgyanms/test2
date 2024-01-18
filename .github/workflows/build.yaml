@@ -30,7 +30,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: lambda-functions-archives
-          path: ${{ github.workspace }}/test
+          path: test
       - name: list
         run: ls -ls
       - name: list2
