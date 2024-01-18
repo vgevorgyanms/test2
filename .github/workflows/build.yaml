@@ -3,9 +3,16 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ua: dev
+      preprod: ua
+      prod: preprod
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Test
+        run: echo ${{ env["ua"] }}
 
       # - uses: ./.github/actions/is-changed
       #   id: is-changed
@@ -14,27 +21,27 @@ jobs:
       # - name: Print
       #   run: echo ${{ steps.is-changed.outputs.any_changed }}
 
-      - name: Build
-        uses: ./.github/actions/build-code
-        with:
-          work-dir: "."
-
-      - name: Upload archives into artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: lambda-functions-archives
-          path: ${{ github.workspace }}/build/
-      - name: Create test directory
-        run: mkdir test
-      - name: Download archives from artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: lambda-functions-archives
-          path: test
-      - name: list
-        run: ls -ls
-      - name: list2
-        run: cd test && ls -ls
+      # - name: Build
+      #   uses: ./.github/actions/build-code
+      #   with:
+      #     work-dir: "."
+      #
+      # - name: Upload archives into artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: lambda-functions-archives
+      #     path: ${{ github.workspace }}/build/
+      # - name: Create test directory
+      #   run: mkdir test
+      # - name: Download archives from artifact
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: lambda-functions-archives
+      #     path: test
+      # - name: list
+      #   run: ls -ls
+      # - name: list2
+      #   run: cd test && ls -ls
 
       # - name: Run
       #   uses: ./.github/actions/run-code
