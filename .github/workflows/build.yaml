@@ -11,8 +11,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Test
-        run: echo ${{ env.${{github.ref_name}} }}
+      # - name: Test
+      #   run: echo ${{ env.${{github.ref_name}} }}
 
       # - uses: ./.github/actions/is-changed
       #   id: is-changed
@@ -43,11 +43,12 @@ jobs:
       # - name: list2
       #   run: cd test && ls -ls
 
-      # - name: Run
-      #   uses: ./.github/actions/run-code
-      #   with:
-      #     work-dir: "./build"
-      #     name: "Vardan,Test"
+      - name: Run
+        id: test
+        uses: ./.github/actions/run-code
+
+      - name: Print name
+        run: echo ${{ steps.test.outputs.aaa }}
 
       # - name: Test
       #   run: |

@@ -1,22 +1,26 @@
 name: Running
 description: Running
-inputs:
-  work-dir:
-    description: Path where build should be done
-    required: true
-  name:
-    description: Name to hello
-    required: true
+# inputs:
+#   work-dir:
+#     description: Path where build should be done
+#     required: true
+#   name:
+#     description: Name to hello
+#     required: true
 
+outputs:
+  aaa:
+    description: asd
+    value: ${{ steps.aaa.outputs.name }}
 runs:
   using: "composite"
   steps:
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: "18"
+    # - name: Set up Node.js
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: "18"
 
     - name: Running index.js
-      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh ${{ inputs.name }}
+      id: aaa
+      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh
       shell: bash
-      working-directory: ${{ inputs.work-dir }}
