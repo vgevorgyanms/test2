@@ -2,6 +2,7 @@ name: Build and run script
 on: push
 jobs:
   build:
+    environment: main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,6 +21,4 @@ jobs:
 
       - name: Test
         run: |
-          echo "Test: |$TEST| "
           echo ${{ vars.TEST }}
-          echo ${{ vars.ENVIRONMENT_STAGE }}
