@@ -1,9 +1,5 @@
 name: Build and run script
-on:
-  pull_request:
-    branches:
-      - main
-    types: [closed]
+on: push
 jobs:
   build:
     environment: ${{ github.ref_name }}
@@ -11,6 +7,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - uses: ./.github/actions/is-changed
+        id: is-changed
+        with:
+          dir: "."
+      - name: Print
+        run: echo ${{ steps.is-changed.outputs.any_changed }}
 
       # - name: Build
       #   uses: ./.github/actions/build-code
@@ -23,10 +26,10 @@ jobs:
       #     work-dir: "./build"
       #     name: "Vardan,Test"
 
-      - name: Test
-        run: |
-          echo ${{ vars.TEST }}
-          echo ${{ github.base_ref }}
-          echo ${{ github.ref }}
-          echo ${{ github.ref_name }}
-          echo ${{ github.env }}
+      # - name: Test
+      #   run: |
+      #     echo ${{ vars.TEST }}
+      #     echo ${{ github.base_ref }}
+      #     echo ${{ github.ref }}
+      #     echo ${{ github.ref_name }}
+      #     echo ${{ github.env }}

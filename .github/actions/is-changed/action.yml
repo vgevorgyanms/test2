@@ -1,0 +1,23 @@
+name: IsChange
+description: Action check given directory for changes
+inputs:
+  dir:
+    description: Directory to check
+    required: true
+
+outputs:
+  any_changed:
+    description: Are there changes in directory
+    value: ${{ steps.changed-files.outputs.any_changed }}
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+    - uses: tj-actions/changed-files@v35
+      id: changed-files
+      with:
+        files: ${{ inputs.dir }}/**/*
+        separator: ","
+    # outputs:
+    #   should-build: ${{ steps.changed-files.outputs.any_changed }}
