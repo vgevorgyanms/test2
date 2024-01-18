@@ -11,3 +11,11 @@ jobs:
         uses: ./.github/actions/build-code
         with:
           work-dir: "."
+
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test run
+        uses: ./.github/actions/run-code
+        with:
+          work-dir: "./build"
