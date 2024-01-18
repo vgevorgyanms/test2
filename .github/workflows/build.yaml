@@ -11,7 +11,7 @@ jobs:
       - uses: ./.github/actions/is-changed
         id: is-changed
         with:
-          dir: "."
+          dir: "./src"
       - name: Print
         run: echo ${{ steps.is-changed.outputs.any_changed }}
 
