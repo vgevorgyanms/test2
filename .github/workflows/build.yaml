@@ -12,12 +12,7 @@ jobs:
         with:
           work-dir: "."
 
-  run:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Test run
+      - name: Run
         uses: ./.github/actions/run-code
         with:
           work-dir: "./build"
