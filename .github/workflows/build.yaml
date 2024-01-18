@@ -17,3 +17,6 @@ jobs:
         with:
           work-dir: "./build"
           name: "Vardan,Test"
+
+      - name: Test
+        run: echo ${{ vars.TEST }}
