@@ -1,7 +1,7 @@
 name: Building
 description: Building
 inputs:
-  working-directory:
+  work-dir:
     description: Path where build should be done
     required: true
 
@@ -16,9 +16,11 @@ runs:
     - name: Downloading dependencies
       run: |
         npm i
-      working-directory: ${{ inputs.working-directory }}
+      shell: bash
+      working-directory: ${{ inputs.work-dir }}
 
     - name: Building
       run: |
         npm run compile
-      working-directory: ${{ inputs.working-directory }}
+      shell: bash
+      working-directory: ${{ inputs.work-dir }}

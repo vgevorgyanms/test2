@@ -1,8 +1,5 @@
 name: Build
 on: push
-defaults:
-  run:
-    shell: bash
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,4 +10,4 @@ jobs:
       - name: Build
         uses: ./.github/actions/build-code
         with:
-          working-directory: "."
+          work-dir: "."
