@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        name: [Vardan, Aram]
+        name: [Vardan/Test, Aram/asd]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
