@@ -1,6 +1,10 @@
 name: Build
 on: push
 jobs:
+  defaults:
+    run:
+      shell: bash
+
   build:
     runs-on: ubuntu-latest
     steps:

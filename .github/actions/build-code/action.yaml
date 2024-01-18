@@ -5,11 +5,6 @@ inputs:
     description: Path where build should be done
     required: true
 
-defaults:
-  run:
-    shell: bash
-    working-directory: ${{ inputs.working-directory }}
-
 runs:
   using: "composite"
   steps:
@@ -21,7 +16,9 @@ runs:
     - name: Downloading dependencies
       run: |
         npm i
+      working-directory: ${{ inputs.working-directory }}
 
     - name: Building
       run: |
         npm run compile
+      working-directory: ${{ inputs.working-directory }}
