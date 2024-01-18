@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lambda-functions-archives
-          path: ${{ github.workspace }}/build
+          path: ${{ github.workspace }}/build/
       - name: Create test directory
         run: mkdir test
       - name: Download archives from artifact
