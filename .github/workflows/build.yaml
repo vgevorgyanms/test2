@@ -7,16 +7,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build
-        uses: ./.github/actions/build-code
-        with:
-          work-dir: "."
-
-      - name: Run
-        uses: ./.github/actions/run-code
-        with:
-          work-dir: "./build"
-          name: "Vardan,Test"
+      # - name: Build
+      #   uses: ./.github/actions/build-code
+      #   with:
+      #     work-dir: "."
+      #
+      # - name: Run
+      #   uses: ./.github/actions/run-code
+      #   with:
+      #     work-dir: "./build"
+      #     name: "Vardan,Test"
 
       - name: Test
         run: |
