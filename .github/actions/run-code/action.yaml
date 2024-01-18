@@ -4,6 +4,9 @@ inputs:
   work-dir:
     description: Path where build should be done
     required: true
+  name:
+    description: Name to hello
+    required: true
 
 runs:
   using: "composite"
@@ -15,6 +18,6 @@ runs:
 
     - name: Running index.js
       run: |
-        node index.js
+        node index.js ${{ inputs.name }}
       shell: bash
       working-directory: ${{ inputs.work-dir }}
