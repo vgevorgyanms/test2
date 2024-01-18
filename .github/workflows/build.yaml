@@ -16,4 +16,6 @@ jobs:
         uses: ./.github/actions/run-code
         with:
           work-dir: "./build"
-          name: ["Vardan", "Test"]
+          name:
+            - "Vardan"
+            - "Test"
