@@ -20,6 +20,6 @@ jobs:
 
       - name: Test
         run: |
-          echo "Test: |$TEST|"
+          echo "Test: |$TEST| "
           echo ${{ vars.TEST }}
           echo ${{ vars.ENVIRONMENT_STAGE }}
