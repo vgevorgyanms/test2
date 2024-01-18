@@ -22,5 +22,5 @@ runs:
 
     - name: Running index.js
       id: aaa
-      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh
+      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh >> $GITHUB_OUTPUT
       shell: bash
