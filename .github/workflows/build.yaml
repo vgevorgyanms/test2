@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Test
-        run: echo ${{ env }}
+        run: echo ${{ env.${{github.ref_name}} }}
 
       # - uses: ./.github/actions/is-changed
       #   id: is-changed
