@@ -21,4 +21,7 @@ jobs:
 
       - name: Test
         run: |
-          echo ${{ vars.TEST }}
+          echo ${{ github.base_ref }}
+          echo ${{ github.ref }}
+          echo ${{ github.ref_name }}
+          echo ${{ github.env }}
