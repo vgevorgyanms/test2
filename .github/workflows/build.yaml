@@ -13,6 +13,7 @@ jobs:
           work-dir: "."
 
   run:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Test run
