@@ -2,7 +2,7 @@ name: Build and run script
 on: push
 jobs:
   build:
-    environment: ${{ GITHUB_BASE_REF }}
+    environment: ${{ github.base_ref }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
