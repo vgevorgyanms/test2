@@ -19,4 +19,6 @@ jobs:
           name: "Vardan,Test"
 
       - name: Test
-        run: echo ${{ vars.TEST }}
+        run: |
+          echo ${{ vars.TEST }}
+          echo ${{ vars.ENVIRONMENT_STAGE }}
