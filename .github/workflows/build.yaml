@@ -1,7 +1,7 @@
 name: Build and run script
 on: push
 env:
-  names: [Vardan, Aram]
+  names: "[Vardan, Aram]"
 jobs:
   build:
     runs-on: ubuntu-latest
