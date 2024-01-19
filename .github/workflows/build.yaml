@@ -26,11 +26,14 @@ jobs:
       name: ${{ matrix.name }}
 
   test:
-    needs: [build]
+    needs: [build, aaa]
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        name: ${{ fromJSON(needs.aaa.outputs.names) }}
     steps:
       - name: Test
-        run: echo ${{ needs.build.outputs.name }}
+        run: echo ${{ matrix.name }}
 
       # - name: Test
       #   run: echo ${{ env.${{github.ref_name}} }}
