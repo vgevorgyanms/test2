@@ -28,6 +28,7 @@ jobs:
 
   test:
     needs: [aaa]
+    if: fromJSON(needs.aaa.outputs.names).length > 0
     runs-on: ubuntu-latest
     strategy:
       matrix:
