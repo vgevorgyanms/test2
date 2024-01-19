@@ -7,6 +7,10 @@ jobs:
       - name: test
         id: test
         run: echo "name=matrix::{\"node\":[\"Vardan\",\"Aram\"]}" >> $GITHUB_OUTPUT
+      - name: print
+        run: echo ${{ steps.test.outputs.name }}
+      - name: print
+        run: echo ${{ steps.test.outputs.matrix }}
     outputs:
       names: ${{ steps.test.outputs.matrix }}
 
