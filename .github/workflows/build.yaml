@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: test
         id: test
-        run: echo "name=[]" >> $GITHUB_OUTPUT
+        run: echo "name=[\"Vardan\"]" >> $GITHUB_OUTPUT
     outputs:
       names: ${{ steps.test.outputs.name }}
 
