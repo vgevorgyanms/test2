@@ -4,6 +4,8 @@ env:
   names: "[Vardan, Aram]"
 jobs:
   build:
+    env:
+      names: "asd"
     runs-on: ubuntu-latest
     strategy:
       matrix:
