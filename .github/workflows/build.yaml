@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: test
         id: test
-        run: echo "names=Vardan" >> $GITHUB_OUTPUT
+        run: echo "names=Vardan,Aram" >> $GITHUB_OUTPUT
     outputs:
       names: ${{ steps.test.outputs.names }}
 
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        name: ${{ needs.aaa.outputs.names }}
+        name: [${{ needs.aaa.outputs.names }}]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
