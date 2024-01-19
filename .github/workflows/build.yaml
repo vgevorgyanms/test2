@@ -13,7 +13,7 @@ jobs:
   build:
     needs: [aaa]
     runs-on: ubuntu-latest
-    if: needs.aaa.outputs.names = '[]'
+    if: needs.aaa.outputs.names == '[]'
     strategy:
       matrix:
         name: ${{ fromJSON(needs.aaa.outputs.names) }}
