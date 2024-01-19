@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        name: ${{ needs.aaa.outputs.names }}
+        name: ${{ fromJSON(needs.aaa.outputs.names) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
