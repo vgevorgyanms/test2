@@ -27,7 +27,7 @@ jobs:
       name: ${{ matrix.name }}
 
   test:
-    needs: [aaa, build]
+    needs: [build, aaa]
     # if: needs.aaa.outputs.names != '[]'
     runs-on: ubuntu-latest
     strategy:
