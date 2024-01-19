@@ -31,6 +31,7 @@ jobs:
     steps:
       - name: Test
         run: echo "Name from test job: ${{ needs.build.outputs.name }}"
+
       # - name: Test
       #   run: echo ${{ env.${{github.ref_name}} }}
 
