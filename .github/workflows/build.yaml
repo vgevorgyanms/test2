@@ -1,13 +1,13 @@
 name: Build and run script
 on: push
+env:
+  names: [Vardan, Aram]
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        name:
-          - Vardan/Test
-          - Aram/asd
+        name: ${{ env.names }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
