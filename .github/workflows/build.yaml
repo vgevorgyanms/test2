@@ -1,15 +1,21 @@
 name: Build and run script
 on: push
-env:
-  names: "[Vardan, Aram]"
 jobs:
+  aaa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        id: test
+        run: echo "names=Vardan" >> $GITHUB_OUTPUT
+    outputs:
+      names: ${{ steps.test.outputs.names }}
+
   build:
-    env:
-      names: "asd"
+    needs: [aaa]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        name: ${{ env.names }}
+        name: ${{ needs.aaa.outputs.names }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
