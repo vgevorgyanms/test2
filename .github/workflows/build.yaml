@@ -13,13 +13,11 @@ jobs:
   build:
     needs: [aaa]
     runs-on: ubuntu-latest
-    # if: fromJSON(needs.aaa.outputs.names).length > 0
+    if: needs.aaa.outputs.names = '[]'
     strategy:
       matrix:
         name: ${{ fromJSON(needs.aaa.outputs.names) }}
     steps:
-      - name: print
-        run: echo ${{ needs.aaa.outputs.names = '[]' }}
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -30,7 +28,7 @@ jobs:
 
   test:
     needs: [aaa]
-    if: fromJSON(needs.aaa.outputs.names).length > 0
+    if: needs.aaa.outputs.names != '[]'
     runs-on: ubuntu-latest
     strategy:
       matrix:
