@@ -6,9 +6,9 @@ jobs:
     steps:
       - name: test
         id: test
-        run: echo "names=matrix::{\"node\":[\"Vardan\",\"Aram\"]}" >> $GITHUB_OUTPUT
+        run: echo "name=matrix::{\"node\":[\"Vardan\",\"Aram\"]}" >> $GITHUB_OUTPUT
     outputs:
-      names: ${{ steps.test.outputs.names }}
+      names: ${{ steps.test.outputs.matrix }}
 
   build:
     needs: [aaa]
