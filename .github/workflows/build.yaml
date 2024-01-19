@@ -19,7 +19,7 @@ jobs:
         name: ${{ fromJSON(needs.aaa.outputs.names) }}
     steps:
       - name: print
-        run: echo ${{ needs.aaa.outputs.names.length }}
+        run: echo ${{ needs.aaa.outputs.names = '[]' }}
       - name: Checkout code
         uses: actions/checkout@v4
 
