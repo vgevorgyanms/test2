@@ -1,21 +1,36 @@
 name: Build and run script
 on: push
 jobs:
-  build:
+  aaa:
     runs-on: ubuntu-latest
+    steps:
+      - name: test
+        id: test
+        run: echo "name=[\"Vardan\",\"Aram\"]" >> $GITHUB_OUTPUT
+    outputs:
+      names: ${{ steps.test.outputs.name }}
+
+  build:
+    needs: [aaa]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        name: ${{ fromJSON(needs.aaa.outputs.names) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - uses: tj-actions/changed-files@v35
-        id: changed-files
-        with:
-          files: ${{ inputs.dir }}/**/*
-          separator: ","
-      - name: print
-        run: echo ${{ steps.changed-files.outputs.all_changed_files }}
-      #
-      # - name: Print name
-      #   run: echo ${{ matrix.name }}
+
+      - name: Print name
+        run: echo ${{ matrix.name }}
+    outputs:
+      name: ${{ matrix.name }}
+
+  test:
+    need: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo "Name from test job: ${{ needs.build.outputs.name }}"
       # - name: Test
       #   run: echo ${{ env.${{github.ref_name}} }}
 
