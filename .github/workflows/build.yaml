@@ -13,11 +13,13 @@ jobs:
   build:
     needs: [aaa]
     runs-on: ubuntu-latest
-    if: fromJSON(needs.aaa.outputs.names).length > 0
+    # if: fromJSON(needs.aaa.outputs.names).length > 0
     strategy:
       matrix:
         name: ${{ fromJSON(needs.aaa.outputs.names) }}
     steps:
+      - name: print
+        run: echo ${{ fromJSON(needs.aaa.outputs.names).length }}
       - name: Checkout code
         uses: actions/checkout@v4
 
