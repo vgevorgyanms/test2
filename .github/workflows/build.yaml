@@ -34,6 +34,6 @@ jobs:
       - name: Run
         uses: ./.github/actions/run-code
         with:
-          files: |
-            src/index.ts
-            src/test.ts
+          files:
+            - src/index.ts
+            - src/test.ts
