@@ -17,7 +17,7 @@ runs:
     #     node-version: "18"
 
     - name: Running index.js
-      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh << EOF
+      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh <<EOF
 ${{ inputs.files }}
 EOF
       shell: bash
