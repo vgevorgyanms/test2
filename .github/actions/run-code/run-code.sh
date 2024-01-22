@@ -1,9 +1,9 @@
 #!/bin/bash
 
-export
+FILES=$1
 
-echo "Var"
-echo $TEST_VAR
+for file in $FILES
+do
+  echo $file
+done
 
-echo "Var2"
-echo $TEST_VAR2

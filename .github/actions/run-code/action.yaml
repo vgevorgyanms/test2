@@ -1,9 +1,9 @@
 name: Running
 description: Running
-# inputs:
-#   work-dir:
-#     description: Path where build should be done
-#     required: true
+inputs:
+  files:
+    description: Path where build should be done
+    required: true
 #   name:
 #     description: Name to hello
 #     required: true
@@ -17,5 +17,5 @@ runs:
     #     node-version: "18"
 
     - name: Running index.js
-      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh
+      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh ${{ inputs.files }}
       shell: bash

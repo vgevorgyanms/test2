@@ -1,7 +1,5 @@
 name: Build and run script
 on: push
-env:
-  TEST_VAR2: VAR2 test
 jobs:
   # aaa:
   #   runs-on: ubuntu-latest
@@ -34,6 +32,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Run
-        env:
-          TEST_VAR: Hello
         uses: ./.github/actions/run-code
+        with:
+          files: |
+            src/index.ts
+            src/test.ts
