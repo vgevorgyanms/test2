@@ -8,10 +8,6 @@ description: Running
 #     description: Name to hello
 #     required: true
 
-outputs:
-  aaa:
-    description: asd
-    value: ${{ steps.aaa.outputs.name }}
 runs:
   using: "composite"
   steps:
@@ -21,6 +17,5 @@ runs:
     #     node-version: "18"
 
     - name: Running index.js
-      id: aaa
-      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh >> $GITHUB_OUTPUT
+      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh
       shell: bash

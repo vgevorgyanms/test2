@@ -7,4 +7,5 @@
 # do
 #   node index.js $func
 # done
-echo "name=Vardan"
+echo |$TEST_VAR|
+echo |$TEST_VAR2|

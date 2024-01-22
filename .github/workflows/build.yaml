@@ -1,41 +1,43 @@
 name: Build and run script
 on: push
+env:
+  TEST_VAR2: VAR2 test
 jobs:
-  aaa:
-    runs-on: ubuntu-latest
-    steps:
-      - name: test
-        id: test
-        run: echo "name=[\"Vardan\"]" >> $GITHUB_OUTPUT
-    outputs:
-      names: ${{ steps.test.outputs.name }}
-
-  build:
-    needs: [aaa]
-    runs-on: ubuntu-latest
-    if: needs.aaa.outputs.names == '[]'
-    strategy:
-      matrix:
-        name: ${{ fromJSON(needs.aaa.outputs.names) }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Print name
-        run: echo ${{ matrix.name }}
-    outputs:
-      name: ${{ matrix.name }}
-
+  # aaa:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: test
+  #       id: test
+  #       run: echo "name=[\"Vardan\"]" >> $GITHUB_OUTPUT
+  #   outputs:
+  #     names: ${{ steps.test.outputs.name }}
+  #
+  # build:
+  #   needs: [aaa]
+  #   runs-on: ubuntu-latest
+  #   if: needs.aaa.outputs.names == '[]'
+  #   strategy:
+  #     matrix:
+  #       name: ${{ fromJSON(needs.aaa.outputs.names) }}
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Print name
+  #       run: echo ${{ matrix.name }}
+  #   outputs:
+  #     name: ${{ matrix.name }}
+  #
   test:
-    needs: [build, aaa]
-    # if: needs.aaa.outputs.names != '[]'
+  #   needs: [build, aaa]
+  #   # if: needs.aaa.outputs.names != '[]'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        name: ${{ fromJSON(needs.aaa.outputs.names) }}
-    steps:
-      - name: Test
-        run: echo ${{ matrix.name }}
+  #   strategy:
+  #     matrix:
+  #       name: ${{ fromJSON(needs.aaa.outputs.names) }}
+  #   steps:
+  #     - name: Test
+  #       run: echo ${{ matrix.name }}
 
       # - name: Test
       #   run: echo ${{ env.${{github.ref_name}} }}
@@ -69,10 +71,11 @@ jobs:
       # - name: list2
       #   run: cd test && ls -ls
 
-      # - name: Run
-      #   id: test
-      #   uses: ./.github/actions/run-code
-      #
+      - name: Run
+        env:
+          TEST_VAR: Hello
+        uses: ./.github/actions/run-code
+
       # - name: Print name
       #   run: echo ${{ steps.test.outputs.aaa }}
 
