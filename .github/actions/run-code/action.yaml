@@ -17,5 +17,5 @@ runs:
     #     node-version: "18"
 
     - name: Running index.js
-      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh ${{ inputs.files }}
+      run: ${{ github.workspace }}/.github/actions/run-code/run-code.sh ${{ inputs.files.join() }}
       shell: bash
