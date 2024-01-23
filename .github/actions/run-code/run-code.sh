@@ -1,9 +1,4 @@
 #!/bin/bash
 
-FILES=$1
-
-for file in $FILES
-do
-  echo $file
-done
-
+echo "path=asd/asd"
+echo "name=asd_asd"

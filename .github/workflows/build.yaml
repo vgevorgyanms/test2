@@ -32,8 +32,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Run
+        id: test
         uses: ./.github/actions/run-code
-        with:
-          files: |
-            src/index.ts
-            src/test.ts
+      - name: print name
+        run: echo ${{ steps.test.outputs.name }}
+      - name: print path
+        run: echo ${{ steps.test.outputs.path }}
